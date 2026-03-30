@@ -21,8 +21,8 @@ El sistema permite visualizar y gestionar información mediante una interfaz est
    Web.config
    
 3. Para que el servidor "ApiAulanet" pueda devolver los endpoints se debe configurar la cadena de conexión del formulario con base al numero de su puerto local:XXXX
-   Puntaje.aspx.cs → cargarIndividualAPI
-   Puntaje.aspx.cs → cargarRankingAPI
+- Puntaje.aspx.cs → cargarIndividualAPI
+-  Puntaje.aspx.cs → cargarRankingAPI
 
 ## Base de datos ##
 
