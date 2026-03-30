@@ -5880,7 +5880,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="DataBase\BDAulanetNahuatl.sql" />
+    <Content Include="DataBase\schema_Aulanet.sql" />
+    <Content Include="DataBase\seed_Aulanet.sql" />
     <Content Include="Estilos\estilos.css" />
     <Content Include="Estilos\EstilosMasters.css" />
     <Content Include="JS\ConometroDeTiempo.js" />
