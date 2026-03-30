@@ -1,0 +1,145 @@
+﻿/* ---------- Master Ext y Interno ---------- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: #2b7c3f;
+    padding: 0px 15px;
+}
+
+/* Texto e íconos blancos, boton hamburguesa */
+.navbar-brand,
+.nav-link,
+.nav-link i {
+    color: white !important;
+}
+
+    /* Hover  */
+    .nav-link:hover,
+    .nav-link:hover i {
+        color: #254F22 !important;
+    }
+
+/* ========================= */
+/* TRADUCTOR */
+/* ========================= */
+
+
+
+.presen-traductor {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+    position: relative;
+    margin-top: 150px;
+}
+
+/* ICONO CON COLOR SOLICITADO */
+.presen-icono {
+    background-color: rgb(218,235,179);
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/*Icono traductor*/
+.iconotrad {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 0.3s;
+    background: rgb(218,235,179);
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+}
+
+    .iconotrad:hover {
+        transform: translateY(-3px) scale(1.12);
+        background: rgb(218,235,179);
+    }
+
+
+.presen-menu {
+    position: absolute;
+    top: 50px;
+
+    background: white;
+    border: 1px solid #ddd;
+    display: none;
+    min-width: 100px;
+    z-index: 100;
+}
+
+.presen-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.presen-menu li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+    .presen-menu li:hover {
+        background-color: rgb(218,235,179);
+    }
+
+.presen-show {
+    display: block;
+}
+
+/* BOTÓN FLOTANTE SIMPLE */
+.presen-btn-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #2b7c3f;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+    font-size: 14px;
+}
+
+/* Mostrar botón */
+.presen-btn-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Icono */
+.presen-icono {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+
+
+footer {
+    border-radius: 5px;
+    background: #2b7c3f;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+/* ---------- Fin del Master Ext ---------- */

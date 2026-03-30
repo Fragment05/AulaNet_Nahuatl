@@ -1,0 +1,177 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Form_int.master.cs" Inherits="Aulanet_web.Form_int" %>
+
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Estilos/EstilosMasters.css" rel="stylesheet" />
+    <link href="Awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="Awesome/css/solid.css" rel="stylesheet" />
+    <link href="Awesome/css/brands.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container mt-2">
+            <header>
+                <nav class="navbar navbar-light">
+
+                    <div class="container-fluid">
+
+                        <!-- LOGO (IZQUIERDA) -->
+                        <a class="navbar-brand"
+                            href="<%= ResolveClientUrl("Presentacion/Presentacion.aspx") %>">
+
+                            <img src="<%= ResolveClientUrl("~/Recursos/Imagenes/Aul@Net.png") %>"
+                                alt="Logo Aul@Net"
+                                style="height: 55px;">
+                        </a>
+
+                        <!-- HAMBURGUESA (DERECHA) -->
+                        <button class="navbar-toggler ms-auto"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#menuNav">
+
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <!-- MENÚ -->
+                        <div class="collapse navbar-collapse text-end" id="menuNav">
+
+                            <ul class="navbar-nav ms-auto">
+
+                                <!-- PERFIL -->
+                                <li class="nav-item mt-2">
+                                    <a class="btn btn-light fw-bold text-success  text-start"
+                                        href="../Presentacion/Perfilusuario.aspx">
+
+                                        <i class="fa-solid fa-user me-2"></i>
+                                        Perfil
+
+                                    </a>
+                                </li>
+
+                                <!-- PUNTAJE -->
+                                <li class="nav-item mt-2">
+                                    <a class="btn btn-light fw-bold text-success  text-start"
+                                        href="../Presentacion/Puntaje.aspx">
+
+                                        <i class="fa-solid fa-trophy me-2"></i>
+                                        Puntaje
+
+                                    </a>
+                                </li>
+
+                                <!-- CERRAR SESIÓN -->
+                                <li class="nav-item mt-2">
+                                    <button type="button"
+                                        class="btn btn-light fw-bold text-success  text-start"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+
+                                        <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                        Cerrar sesión
+
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </nav>
+            </header>
+
+            <!-- MODAL CERRAR SESIÓN -->
+            <div class="modal fade" id="staticBackdrop"
+                tabindex="-1"
+                aria-labelledby="cerrarSesionLabel"
+                aria-hidden="true">
+
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title" id="cerrarSesionLabel">Confirmar cierre de sesión
+                            </h5>
+                            <button type="button"
+                                class="btn-close btn-close-white"
+                                data-bs-dismiss="modal">
+                            </button>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <p class="fs-5">
+                                ¿Estás seguro que deseas cerrar sesión?
+                            </p>
+                        </div>
+
+                        <div class="modal-footer justify-content-center">
+                            <button type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+
+                            <button type="button"
+                                class="btn btn-danger"
+                                onclick="window.location.href='/Presentacion/Presentacion.aspx'">
+                                Sí, cerrar sesión
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <br>
+
+            <!-- BOTÓN TRADUCTOR -->
+            <div class="presen-traductor">
+
+                <img src="../Recursos/Imagenes/logo_lenguaje.png"
+                    class="iconotrad"
+                    onclick="presenToggleMenu()"
+                    alt="Traductor" />
+
+                <div class="presen-menu" id="presenMenuIdioma">
+                    <ul>
+                        <li onclick="presenCambiarModo('es')">Español</li>
+                        <li onclick="presenCambiarModo('na')">Náhuatl</li>
+                        <li onclick="presenCambiarModo('es-na')">Español + Náhuatl</li>
+                        <li onclick="presenCambiarModo('na-es')">Náhuatl + Español</li>
+                    </ul>
+                </div>
+
+            </div>
+            <section class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </section>
+            <br />
+
+
+
+            <footer id="bottom">
+                <p>Aul@Net - Castores Multilingües © 2025 - 2026 Todos los derechos reservados.</p>
+            </footer>
+            <script src="<%=ResolveClientUrl("~/Scripts/bootstrap.bundle.min.js")%>"></script>
+
+        </div>
+    </form>
+    <script src="../JS/presen-script.js"></script>
+    <script src="JS/GeneradorCaptcha.js"></script>
+    <script src="JS/IdiomaConfig.js"></script>
+</body>
+</html>

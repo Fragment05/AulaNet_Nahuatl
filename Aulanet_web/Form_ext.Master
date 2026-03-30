@@ -1,0 +1,342 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Form_ext.master.cs" Inherits="Aulanet_web.Form_ext" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Estilos/EstilosMasters.css" rel="stylesheet" />
+    <link href="Awesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="Awesome/css/solid.css" rel="stylesheet" />
+    <link href="Awesome/css/brands.css" rel="stylesheet" />
+    <link href="Awesome/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container mt-2">
+            <header>
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid  d-flex align-items-center">
+
+                        <!-- AULANET -->
+                        <a class="navbar-brand fw-bolder fs-3 order-1 order-lg-1"
+                            href="<%= ResolveClientUrl("Presentacion/Presentacion.aspx") %>">
+                            <img src="<%= ResolveClientUrl("~/Recursos/Imagenes/Aul@Net.png") %>"
+                                alt="Logo Aul@Net"
+                                style="height: 40px; width: auto;"
+                                class="d-inline-block align-top" />
+                        </a>
+
+                        <!-- BOTON -->
+
+                        <button class="navbar-toggler order-3 order-lg-2" type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+
+                        <!-- REFERENCIAS -->
+
+                        <div class="collapse navbar-collapse order-4 order-lg-2 justify-content-center" id="navbarNav">
+                            <div class="navbar-nav">
+
+                                <a class="nav-link" href="<%= ResolveClientUrl("~/Presentacion/Presentacion.aspx") %>">
+                                    <i class="fa-solid fa-house me-1"></i>
+                                    <span data-es="Principal" data-na="Kalpan">Principal</span>
+                                </a>
+
+                                <a class="nav-link" href="<%= ResolveClientUrl("~/Presentacion/Presentacion.aspx#nosotros") %>">
+                                    <i class="fa-solid fa-users me-1"></i>
+                                    <span data-es="Nosotros" data-na="Tohuan">Nosotros</span>
+                                </a>
+
+                                <a class="nav-link" href="<%= ResolveClientUrl("~/Presentacion/Presentacion.aspx#caracteristicas") %>">
+                                    <i class="fa-solid fa-list-check me-1"></i>
+                                    <span data-es="Características" data-na="Tlamantli tlen kipia">Características</span>
+                                </a>
+
+                                <a class="nav-link" href="<%= ResolveClientUrl("~/Presentacion/Presentacion.aspx#creado") %>">
+                                    <i class="fa-solid fa-calendar-check me-1"></i>
+                                    <span data-es="Creado en" data-na="Mochijchiwa ipan">Creado en</span>
+                                </a>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <!-- BOTON INICIO DE SESION -->
+                    <div class="order-2 order-lg-3 ms-auto me-3">
+                        <button type="button"
+                                class="btn btn-light fw-bold text-success"
+                                data-bs-toggle="modal"
+                                data-bs-target="#loginModal"
+                                data-es="Iniciar sesión"
+                                data-na="Yoltemoa">
+                            Iniciar sesión
+                        </button>
+                        <asp:Button ID="btnLoginASP" runat="server" Text="Button" style="display:none" OnClick="btnLoginASP_Click" />
+                    </div>
+                    </div>
+                </nav>
+            </header>
+                                            <br>
+
+                 <!-- BOTÓN TRADUCTOR -->
+                <div class="presen-traductor">
+
+                <img src="../Recursos/Imagenes/logo_lenguaje.png" 
+                     class="iconotrad"
+                     onclick="presenToggleMenu()"
+                     alt="Traductor" />
+
+                    <div class="presen-menu" id="presenMenuIdioma">
+                        <ul>
+                            <li onclick="presenCambiarModo('es')">Español</li>
+                            <li onclick="presenCambiarModo('na')">Náhuatl</li>
+                            <li onclick="presenCambiarModo('es-na')">Español + Náhuatl</li>
+                            <li onclick="presenCambiarModo('na-es')">Náhuatl + Español</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+            <section class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </section>
+            <br />
+
+
+
+
+          <script>
+              function presenToggleMenu() {
+                  document.getElementById("presenMenuIdioma")
+                      .classList.toggle("presen-show");
+              }
+
+              function presenCambiarModo(modo) {
+
+                  localStorage.setItem("idiomaSeleccionado", modo);
+
+                  const elementos = document.querySelectorAll('[data-es]');
+
+                  elementos.forEach(el => {
+
+                      const es = el.getAttribute('data-es');
+                      const na = el.getAttribute('data-na');
+
+                      
+                      if (el.classList.contains("avatar-btn")) {
+
+                          const span = el.querySelector(".nombre-traje");
+
+                          if (modo === 'es') span.textContent = es;
+                          if (modo === 'na') span.textContent = na;
+
+                          if (modo === 'es-na') {
+                              span.innerHTML =
+                                  '<span class="idioma-principal">' + es + '</span>' +
+                                  '<span class="idioma-secundario"> / ' + na + '</span>';
+                          }
+
+                          if (modo === 'na-es') {
+                              span.innerHTML =
+                                  '<span class="idioma-principal">' + na + '</span>' +
+                                  '<span class="idioma-secundario"> / ' + es + '</span>';
+                          }
+
+                          return; 
+                      }
+
+                      
+                      if (modo === 'es') el.textContent = es;
+                      if (modo === 'na') el.textContent = na;
+
+                      if (modo === 'es-na') {
+                          el.innerHTML =
+                              '<span class="idioma-principal">' + es + '</span>' +
+                              '<span class="idioma-secundario"> / ' + na + '</span>';
+                      }
+
+                      if (modo === 'na-es') {
+                          el.innerHTML =
+                              '<span class="idioma-principal">' + na + '</span>' +
+                              '<span class="idioma-secundario"> / ' + es + '</span>';
+                      }
+
+                  });
+
+                  document.getElementById("presenMenuIdioma")
+                      .classList.remove("presen-show");
+              }
+
+              document.addEventListener("DOMContentLoaded", function () {
+
+                  const idiomaGuardado = localStorage.getItem("idiomaSeleccionado");
+
+                  if (idiomaGuardado) {
+                      presenCambiarModo(idiomaGuardado);
+                  }
+
+              });
+          </script>
+                        <!-- Captcha simple -->
+            <script>
+
+                let captchaGenerado = "";
+
+                function generarCaptcha() {
+                    captchaGenerado = Math.floor(1000 + Math.random() * 9000);
+                    document.getElementById("captchaText").textContent = captchaGenerado;
+                }
+
+                function validarLogin() {
+                    const captchaUsuario = document.getElementById("captchaInput").value;
+
+                    if (captchaUsuario != captchaGenerado) {
+                        alert("Captcha incorrecto");
+                        generarCaptcha();
+                        return;
+                    }
+
+                    //alert("Formulario listo para validar backend");
+                    document.getElementById('<%= btnLoginASP.ClientID %>').click();
+                }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    generarCaptcha();
+                });
+
+            </script>
+
+            <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Header modal -->
+            <div class="modal-header">
+                <h5 class="modal-title"
+                    data-es="Iniciar sesión"
+                    data-na="Yoltemoa">
+                    Iniciar sesión
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- Body modal -->
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label"
+                           data-es="Correo electrónico"
+                           data-na="Correo electrónico">
+                        Correo electrónico
+                    </label>
+                    <input id="txtCorreo"  type="email" class="form-control" runat="server">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"
+                           data-es="Contraseña"
+                           data-na="Tlatquitl">
+                        Contraseña
+                    </label>
+                    <input id="txtPassword" type="password" class="form-control" runat="server">
+                </div>
+
+                <!-- CAPTCHA simple (visual) -->
+                <div class="mb-3">
+                    <label class="form-label"
+                           data-es="Verificación"
+                           data-na="Verificación">
+                        Verificación
+                    </label>
+                    <div class="d-flex gap-2">
+                        <span id="captchaText"
+                              class="fw-bold bg-light p-2 border rounded"></span>
+                        <input type="text"
+                               class="form-control"
+                               id="captchaInput">
+                    </div>
+                </div>
+
+            </div>
+
+                        <!-- Footer modal-->
+                        <div class="modal-footer">
+
+                            <button type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                    data-es="Cancelar"
+                                    data-na="Cancelar">
+                                Cancelar
+                            </button>
+
+                            <button type="button"
+                                    class="btn btn-success"
+                                    onclick="validarLogin()"
+                                    data-es="Ingresar"
+                                    data-na="Kalaki">
+                                Ingresar
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+                        <!-- Script de sesion-->
+
+            <script>
+                function validarRegistro() {
+
+                    const p1 = document.getElementById("pass1").value;
+                    const p2 = document.getElementById("pass2").value;
+                    const terminos = document.getElementById("terminos").checked;
+
+                    if (p1 !== p2) {
+                        alert("Las contraseñas no coinciden");
+                        return;
+                    }
+
+                    if (!terminos) {
+                        alert("Debes aceptar los términos y condiciones");
+                        return;
+                    }
+
+                    alert("Registro listo para enviar al servidor");
+                }
+            </script>
+
+
+
+
+            <footer id="bottom">
+                <p>Aul@Net - Castores Multilingües © 2025 - 2026 Todos los derechos reservados.</p>
+            </footer>
+            <script src="<%=ResolveClientUrl("~/Scripts/bootstrap.bundle.min.js")%>"></script>
+
+        </div>
+    </form>
+</body>
+</html>
