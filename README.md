@@ -19,7 +19,10 @@ El sistema permite visualizar y gestionar información mediante una interfaz est
 
 2. Configurar la cadena de conexión en:
    Web.config
-
+   
+3. Para que el servidor "ApiAulanet" pueda devolver los endpoints se debe configurar la cadena de conexión del formulario con base al numero de su puerto local:XXXX
+   Puntaje.aspx.cs → cargarIndividualAPI
+   Puntaje.aspx.cs → cargarRankingAPI
 
 ## Base de datos ##
 
@@ -33,8 +36,8 @@ El proyecto incluye scripts de base de datos en la carpeta:
 
 ### Pasos ##
 1. Abrir SQL Server
-2. Ejecutar schema.sql
-3. Ejecutar seed.sql
+2. Ejecutar schema_Aulanet.sql
+3. Ejecutar seed_Aulanet.sql
 4. Verificar conexión en la aplicación
 
 
