@@ -5,7 +5,7 @@ Este proyecto consiste en una aplicación para la preservación y enseñanza del
 y consulta de datos, tomando en integrando una base de datos relacional con funcionalidades de acceso y manipulación de información.
 El sistema permite visualizar y gestionar información mediante una interfaz estructurada, conectada a SQL Server Management Studio.
 
-## 🛠️ Tecnologías utilizadas ##
+##  Tecnologías utilizadas ##
 - C#
 - ASP.NET
 - SQL Server
@@ -45,11 +45,11 @@ El proyecto incluye scripts de base de datos en la carpeta:
 - Conexión a SQL Server
 - Operaciones básicas CRUD 
 
-################################################
+##
  El proyecto utiliza datos de prueba
  No contiene información sensible
  Desarrollado con fines académicos
-################################################
+##
 
 
 ## Autores ##
